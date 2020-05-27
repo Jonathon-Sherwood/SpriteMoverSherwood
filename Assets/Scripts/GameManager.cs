@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    //Allows the designer to specify which object is being deactivated in inspector.
     public GameObject objectToDeactivate;
-    public SpriteMovement componentToDisable;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Constrains designer to only assign game objects with SpriveMovement component in inspector.
+    public SpriteMovement componentToDisable;
 
     // Update is called once per frame
     void Update()
