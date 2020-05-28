@@ -12,6 +12,7 @@ public class Victory : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        //When the player reaches the end of the maze they are unable to move and the victory screen appears.
         if (other.gameObject.name == "Player")
         {
             objectToActivate.SetActive(true);

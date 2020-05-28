@@ -10,6 +10,14 @@ public class SpriteMovement : MonoBehaviour
     //Allows the designer to adjust the speed of the gameobjects movement speed in the inspector.
     public float movementSpeed = 0.1f;
 
+    //Allows the designer to specify which object's animator is being called.
+    public Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +45,8 @@ public class SpriteMovement : MonoBehaviour
                 //Moves gameobject upwards based on movementspeed.
                 transform.position += Vector3.up * movementSpeed * Time.deltaTime;
             }
+            //When the sprite is moving, the animation starts moving
+            anim.SetBool("Moving", true);
         }
         //Only allows gameobject to move downward if player is not also holding up.
         else if (!Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow))
@@ -51,6 +61,12 @@ public class SpriteMovement : MonoBehaviour
                 //Moves gameobject downwards based on movementspeed.
                 transform.position -= Vector3.up * movementSpeed * Time.deltaTime;
             }
+            //When the sprite is moving, the animation starts moving
+            anim.SetBool("Moving", true);
+        } else
+        {
+            //When the sprite stops moving, the animation should stop moving. This is true regardless of direction.
+            anim.SetBool("Moving", false);
         }
     }
 
@@ -72,6 +88,8 @@ public class SpriteMovement : MonoBehaviour
                 //Moves gameobject to the right based on movementspeed.
                 transform.position += Vector3.right * movementSpeed * Time.deltaTime;
             }
+            //When the sprite is moving, the animation starts moving
+            anim.SetBool("Moving", true);
         }
         //Only allows gameobject to move to the left if player is not also holding right.
         else if (!Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
@@ -86,6 +104,8 @@ public class SpriteMovement : MonoBehaviour
                 //Moves gameobject tot he left based on movementspeed.
                 transform.position -= Vector3.right * movementSpeed * Time.deltaTime;
             }
+            //When the sprite is moving, the animation starts moving
+            anim.SetBool("Moving", true);
         }
     }
 
